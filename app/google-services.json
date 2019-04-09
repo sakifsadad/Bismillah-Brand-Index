@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "419724873817",
+    "firebase_url": "https://bismillah-brand-index-1f804.firebaseio.com",
+    "project_id": "bismillah-brand-index-1f804",
+    "storage_bucket": "bismillah-brand-index-1f804.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419724873817:android:921fc58d185de4f4",
+        "android_client_info": {
+          "package_name": "com.example.bismillahbrandindex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419724873817-lvoo1b9mflcfe0roi3gs47suamtf36gv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bismillahbrandindex",
+            "certificate_hash": "2013dd16d52de0a1143eee5bce4c6b8385c6779e"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxySTc1gxW4yPnocNP94vjJmI3Wdb1zgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419724873817-5plqjt867de5c9doacun0todujmu6p3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419724873817:android:c61f5db39584a47a",
+        "android_client_info": {
+          "package_name": "com.example.dil.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419724873817-6rb10e5ubrdfs06i5cr8f8jgc8lihfur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dil.admin",
+            "certificate_hash": "7116fb955613f73b7739769c5d8c98775b942dbb"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxySTc1gxW4yPnocNP94vjJmI3Wdb1zgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419724873817-5plqjt867de5c9doacun0todujmu6p3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419724873817:android:28370a214373afda",
+        "android_client_info": {
+          "package_name": "com.example.itsrafi.userapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxySTc1gxW4yPnocNP94vjJmI3Wdb1zgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419724873817-5plqjt867de5c9doacun0todujmu6p3q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
