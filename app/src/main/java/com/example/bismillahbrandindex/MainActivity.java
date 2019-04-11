@@ -1,5 +1,6 @@
 package com.example.bismillahbrandindex;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -57,11 +58,20 @@ public class MainActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<AvailableProducts, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<AvailableProducts, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull AvailableProducts model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final AvailableProducts model) {
 
                         holder.txtProductName.setText(model.getProductName());
                         holder.txtProductPrice.setText(model.getPrice());
                         Picasso.get().load(model.getImages()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MainActivity.this, ProductDetails.class);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
+                            }
+                        });
 
 
                     }
