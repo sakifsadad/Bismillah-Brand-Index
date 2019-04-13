@@ -21,13 +21,14 @@ public class ProductDetails extends YouTubeBaseActivity {
     private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
+    private String youtubeVideoLink;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
-
+        //show loader
         productID = getIntent().getStringExtra("pid");
 
 
@@ -45,10 +46,16 @@ public class ProductDetails extends YouTubeBaseActivity {
         pothers = (TextView) findViewById(R.id.others);
 
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
+        getProductDetails(productID);
+//        initiateYoutube();
+    }
+
+    private void initiateYoutube() {
         youTubePlayerView.initialize(YouTubeAPI.API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("1Boo311IVuc");
+                //hide loader
+                youTubePlayer.loadVideo(youtubeVideoLink);
             }
 
             @Override
@@ -56,17 +63,11 @@ public class ProductDetails extends YouTubeBaseActivity {
 
             }
         });
-
-
-
-        getProductDetails(productID);
-
-
     }
 
     private void getProductDetails(String productID) {
 
-        DatabaseReference availableProductsRef = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
+        final DatabaseReference availableProductsRef = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
 
         availableProductsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -88,7 +89,8 @@ public class ProductDetails extends YouTubeBaseActivity {
                     pfingerprint.setText(availableProducts.getFingerprint());
                     pothers.setText(availableProducts.getOthers());
 
-
+                    youtubeVideoLink = availableProducts.getYoutubeVideoLink();
+                    initiateYoutube();
                 }
 
             }

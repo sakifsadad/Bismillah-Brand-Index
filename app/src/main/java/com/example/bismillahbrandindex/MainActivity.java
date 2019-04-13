@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
+import com.example.bismillahbrandindex.Model.Images;
 import com.example.bismillahbrandindex.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                         holder.txtProductName.setText(model.getProductName());
                         holder.txtProductPrice.setText(model.getPrice());
-                        Picasso.get().load(model.getImages()).into(holder.imageView);
+                        Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -88,5 +89,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.startListening();
 
 
+    }
+
+    private String getThumbnailImage(AvailableProducts model) {
+        Images imageUris = model.getImageUris();
+        String id = imageUris == null ? model.getImages() : imageUris.getImages().get(0);
+        return id;
     }
 }
