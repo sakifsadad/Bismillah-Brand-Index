@@ -3,10 +3,10 @@ package com.example.bismillahbrandindex;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
+import com.example.bismillahbrandindex.Model.UpcomingProducts;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -17,9 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static android.support.constraint.solver.widgets.ConstraintWidget.GONE;
-
-public class ProductDetails extends YouTubeBaseActivity {
+public class UpcomingProductDetails extends YouTubeBaseActivity {
 
     private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
@@ -30,7 +28,7 @@ public class ProductDetails extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_details);
+        setContentView(R.layout.activity_upcoming_product_details);
         //show loader
         productID = getIntent().getStringExtra("pid");
 
@@ -59,7 +57,6 @@ public class ProductDetails extends YouTubeBaseActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 //hide loader
                 youTubePlayer.loadVideo(youtubeVideoLink);
-
             }
 
             @Override
@@ -71,29 +68,29 @@ public class ProductDetails extends YouTubeBaseActivity {
 
     private void getProductDetails(String productID) {
 
-        final DatabaseReference availableProductsRef = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
+        final DatabaseReference upcomongProductsref = FirebaseDatabase.getInstance().getReference().child("Upcoming Products");
 
-        availableProductsRef.child(productID).addValueEventListener(new ValueEventListener() {
+        upcomongProductsref.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.exists()) {
-                    AvailableProducts availableProducts = dataSnapshot.getValue(AvailableProducts.class);
+                    UpcomingProducts upcomingProducts = dataSnapshot.getValue(UpcomingProducts.class);
 
-                    pname.setText(availableProducts.getProductName());
-                    pprice.setText(availableProducts.getPrice() + " Tk.");
-                    pdisplay.setText(availableProducts.getDisplay());
-                    pcolor.setText(availableProducts.getColor());
-                    pram.setText(availableProducts.getRAM());
-                    prom.setText(availableProducts.getMemory());
-                    pcamera.setText(availableProducts.getCamera());
-                    pbattery.setText(availableProducts.getBattery());
-                    pprocessor.setText(availableProducts.getProcessor());
-                    pnetwork.setText(availableProducts.getNetwork());
-                    pfingerprint.setText(availableProducts.getFingerprint());
-                    pothers.setText(availableProducts.getOthers());
+                    pname.setText(upcomingProducts.getProductName());
+                    pprice.setText(upcomingProducts.getPrice() + " Tk.");
+                    pdisplay.setText(upcomingProducts.getDisplay());
+                    pcolor.setText(upcomingProducts.getColor());
+                    pram.setText(upcomingProducts.getRAM());
+                    prom.setText(upcomingProducts.getMemory());
+                    pcamera.setText(upcomingProducts.getCamera());
+                    pbattery.setText(upcomingProducts.getBattery());
+                    pprocessor.setText(upcomingProducts.getProcessor());
+                    pnetwork.setText(upcomingProducts.getNetwork());
+                    pfingerprint.setText(upcomingProducts.getFingerprint());
+                    pothers.setText(upcomingProducts.getOthers());
 
-                    youtubeVideoLink = availableProducts.getYoutubeVideoLink();
+                    youtubeVideoLink = upcomingProducts.getYoutubeVideoLink();
                     initiateYoutube();
                 }
 

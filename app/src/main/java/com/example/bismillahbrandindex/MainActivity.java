@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
 import com.example.bismillahbrandindex.Model.Images;
@@ -25,11 +26,14 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference availableProductsref;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_home);
+
+        button = (Button) findViewById(R.id.upcoming_product_button);
 
         availableProductsref = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
 
@@ -44,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
 //        layoutManager = new LinearLayoutManager(getApplicationContext(), numberOfColumns);
         recyclerView.setLayoutManager(layoutManager);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this, AllUpcomingProducts.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

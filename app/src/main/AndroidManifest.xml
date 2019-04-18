@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ProductDetails"></activity>
+        <activity android:name=".UpcomingProductDetails"></activity>
+        <activity android:name=".AllUpcomingProducts" />
+        <activity android:name=".ProductDetails" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
