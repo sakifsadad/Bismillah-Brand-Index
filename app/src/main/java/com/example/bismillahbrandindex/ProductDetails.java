@@ -1,6 +1,8 @@
 package com.example.bismillahbrandindex;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.support.constraint.solver.widgets.ConstraintWidget.GONE;
 
 public class ProductDetails extends YouTubeBaseActivity {
@@ -25,6 +30,9 @@ public class ProductDetails extends YouTubeBaseActivity {
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
     private String youtubeVideoLink;
+
+    private ViewPager productImagesViewPager;
+    private TabLayout viewpagerIndicator;
 
 
     @Override
@@ -51,6 +59,20 @@ public class ProductDetails extends YouTubeBaseActivity {
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
 //        initiateYoutube();
+
+        productImagesViewPager = findViewById(R.id.product_images);
+        viewpagerIndicator = findViewById(R.id.viewpager_indicator);
+
+
+        List<Integer> productImages = new ArrayList<>();
+        productImages.add(R.drawable.dil);
+        productImages.add(R.drawable.dill);
+        productImages.add(R.drawable.dill);
+
+        ProductImagesAdapter productImagesAdapter = new ProductImagesAdapter(productImages);
+        productImagesViewPager.setAdapter(productImagesAdapter);
+
+        viewpagerIndicator.setupWithViewPager(productImagesViewPager, true);
     }
 
     private void initiateYoutube() {
