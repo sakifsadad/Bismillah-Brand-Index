@@ -3,9 +3,7 @@ package com.example.bismillahbrandindex;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
@@ -22,9 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.support.constraint.solver.widgets.ConstraintWidget.GONE;
-
-public class ProductDetails extends YouTubeBaseActivity {
+public class AvailableProductDetails extends YouTubeBaseActivity {
 
     private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
@@ -38,7 +34,7 @@ public class ProductDetails extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_details);
+        setContentView(R.layout.activity_available_product_details);
         //show loader
         productID = getIntent().getStringExtra("pid");
 

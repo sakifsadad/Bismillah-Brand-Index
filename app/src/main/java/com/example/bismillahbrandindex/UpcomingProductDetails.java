@@ -1,6 +1,8 @@
 package com.example.bismillahbrandindex;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -17,18 +19,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UpcomingProductDetails extends YouTubeBaseActivity {
 
     private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
     private String youtubeVideoLink;
+    private ViewPager productImagesViewPager;
+    private TabLayout viewpagerIndicator;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upcoming_product_details);
+        setContentView(R.layout.activity_available_product_details);
         //show loader
         productID = getIntent().getStringExtra("pid");
 
@@ -49,6 +56,20 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
 //        initiateYoutube();
+
+        productImagesViewPager = findViewById(R.id.product_images);
+        viewpagerIndicator = findViewById(R.id.viewpager_indicator);
+
+
+        List<Integer> productImages = new ArrayList<>();
+        productImages.add(R.drawable.dil);
+        productImages.add(R.drawable.dill);
+        productImages.add(R.drawable.dill);
+
+        ProductImagesAdapter productImagesAdapter = new ProductImagesAdapter(productImages);
+        productImagesViewPager.setAdapter(productImagesAdapter);
+
+        viewpagerIndicator.setupWithViewPager(productImagesViewPager, true);
     }
 
     private void initiateYoutube() {

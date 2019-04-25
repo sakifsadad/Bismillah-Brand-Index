@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         availableProductsref = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
 
+
+
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         int numberOfColumns = 3;
@@ -76,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
                         holder.txtProductName.setText(model.getProductName());
                         holder.txtProductPrice.setText(model.getPrice());
                         Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
-
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(MainActivity.this, ProductDetails.class);
+                                Intent intent = new Intent(MainActivity.this, AvailableProductDetails.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
                             }
