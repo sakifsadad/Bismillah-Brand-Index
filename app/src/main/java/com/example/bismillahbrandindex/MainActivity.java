@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
 import com.example.bismillahbrandindex.Model.Images;
@@ -31,17 +32,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_home);
+        setContentView(R.layout.activity_main);
+        setTitle("In Stores Now");
 
         button = (Button) findViewById(R.id.upcoming_product_button);
 
-        availableProductsref = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
+        availableProductsref = FirebaseDatabase.getInstance().getReference().child("Available Products");
 
 
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        int numberOfColumns = 3;
+        int numberOfColumns = 2;
         layoutManager = new LinearLayoutManager(this);
 
 
@@ -54,9 +56,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this, AllUpcomingProducts.class);
+                if (AppStatus.getInstance(MainActivity.this).isOnline()){
+                    Intent intent = new Intent(MainActivity.this, AllUpcomingProducts.class);
                 startActivity(intent);
             }
+
+            else {
+                Toast.makeText(MainActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                }
+        }
         });
 
     }
@@ -76,15 +84,21 @@ public class MainActivity extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final AvailableProducts model) {
 
                         holder.txtProductName.setText(model.getProductName());
-                        holder.txtProductPrice.setText(model.getPrice());
+                        holder.txtProductPrice.setText(model.getPrice() + " Tk.");
                         Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(MainActivity.this, AvailableProductDetails.class);
+                                if (AppStatus.getInstance(MainActivity.this).isOnline()){
+                                    Intent intent = new Intent(MainActivity.this, AvailableProductDetails.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
                             }
+
+                            else {
+                                    Toast.makeText(MainActivity.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                                }
+                        }
                         });
 
 

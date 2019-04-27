@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
 import com.example.bismillahbrandindex.Model.Images;
@@ -32,6 +33,7 @@ public class AllUpcomingProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming_products);
+        setTitle("Upcoming Products");
 
 
 
@@ -39,7 +41,7 @@ public class AllUpcomingProducts extends AppCompatActivity {
 
             recyclerView = findViewById(R.id.recycler_menu1);
             recyclerView.setHasFixedSize(true);
-            int numberOfColumns = 3;
+            int numberOfColumns = 2;
             layoutManager = new LinearLayoutManager(this);
 
 
@@ -68,16 +70,21 @@ public class AllUpcomingProducts extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final UpcomingProducts model) {
 
                         holder.txtProductName.setText(model.getProductName());
-                        holder.txtProductPrice.setText(model.getPrice());
+                        holder.txtProductPrice.setText(model.getPrice() + " Tk.");
 //                        Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(AllUpcomingProducts.this, UpcomingProductDetails.class);
+                                if (AppStatus.getInstance(AllUpcomingProducts.this).isOnline()){
+                                    Intent intent = new Intent(AllUpcomingProducts.this, UpcomingProductDetails.class);
                                 intent.putExtra("pid", model.getPid());
                                 startActivity(intent);
                             }
+                            else {
+                                    Toast.makeText(AllUpcomingProducts.this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                                }
+                        }
                         });
                     }
 

@@ -24,7 +24,7 @@ import java.util.List;
 
 public class UpcomingProductDetails extends YouTubeBaseActivity {
 
-    private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
+    private TextView pname, pprice, pdisplay, pcolor, psim, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
     private String youtubeVideoLink;
@@ -52,6 +52,7 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
         pnetwork = (TextView) findViewById(R.id.network);
         pfingerprint = (TextView) findViewById(R.id.fingerprint);
         pothers = (TextView) findViewById(R.id.others);
+        psim = (TextView) findViewById(R.id.sim);
 
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
@@ -103,13 +104,14 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
                     pdisplay.setText(upcomingProducts.getDisplay());
                     pcolor.setText(upcomingProducts.getColor());
                     pram.setText(upcomingProducts.getRAM());
-                    prom.setText(upcomingProducts.getMemory());
+                    prom.setText(upcomingProducts.getROM());
                     pcamera.setText(upcomingProducts.getCamera());
                     pbattery.setText(upcomingProducts.getBattery());
                     pprocessor.setText(upcomingProducts.getProcessor());
                     pnetwork.setText(upcomingProducts.getNetwork());
                     pfingerprint.setText(upcomingProducts.getFingerprint());
                     pothers.setText(upcomingProducts.getOthers());
+                    psim.setText(upcomingProducts.getSim());
 
                     youtubeVideoLink = upcomingProducts.getYoutubeVideoLink();
                     initiateYoutube();

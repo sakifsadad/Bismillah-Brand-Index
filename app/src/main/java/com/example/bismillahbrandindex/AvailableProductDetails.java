@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class AvailableProductDetails extends YouTubeBaseActivity {
 
-    private TextView pname, pprice, pdisplay, pcolor, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
+    private TextView pname, pprice, pdisplay, pcolor, psim, pram, prom, pcamera, pbattery, pprocessor, pnetwork, pfingerprint, pothers;
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
     private String youtubeVideoLink;
@@ -51,6 +52,7 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
         pnetwork = (TextView) findViewById(R.id.network);
         pfingerprint = (TextView) findViewById(R.id.fingerprint);
         pothers = (TextView) findViewById(R.id.others);
+        psim = (TextView) findViewById(R.id.sim);
 
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
@@ -89,7 +91,7 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
 
     private void getProductDetails(String productID) {
 
-        final DatabaseReference availableProductsRef = FirebaseDatabase.getInstance().getReference().child("AvailableProducts");
+        final DatabaseReference availableProductsRef = FirebaseDatabase.getInstance().getReference().child("Available Products");
 
         availableProductsRef.child(productID).addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,13 +105,14 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
                     pdisplay.setText(availableProducts.getDisplay());
                     pcolor.setText(availableProducts.getColor());
                     pram.setText(availableProducts.getRAM());
-                    prom.setText(availableProducts.getMemory());
+                    prom.setText(availableProducts.getROM());
                     pcamera.setText(availableProducts.getCamera());
                     pbattery.setText(availableProducts.getBattery());
                     pprocessor.setText(availableProducts.getProcessor());
                     pnetwork.setText(availableProducts.getNetwork());
                     pfingerprint.setText(availableProducts.getFingerprint());
                     pothers.setText(availableProducts.getOthers());
+                    psim.setText(availableProducts.getSim());
 
                     youtubeVideoLink = availableProducts.getYoutubeVideoLink();
                     initiateYoutube();

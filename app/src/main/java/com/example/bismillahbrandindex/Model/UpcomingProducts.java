@@ -2,14 +2,14 @@ package com.example.bismillahbrandindex.Model;
 
 public class UpcomingProducts {
 
-    private String ProductName, Price, images, Battery, Camera, Color, Display, Fingerprint, Memory, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
+    private String ProductName, Price, images, Battery, Camera, Color, Display, Fingerprint, ROM, Sim, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
     private Images imageUris;
 
     public UpcomingProducts() {
 
     }
 
-    public UpcomingProducts(String productName, String price, String images, String battery, String camera, String color, String display, String fingerprint, String memory, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
+    public UpcomingProducts(String productName, String price, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String sim, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
         this.ProductName = productName;
         this.Price = price;
         this.images = images;
@@ -18,7 +18,8 @@ public class UpcomingProducts {
         this.Color = color;
         this.Display = display;
         this.Fingerprint = fingerprint;
-        this.Memory = memory;
+        this.ROM = ROM;
+        this.Sim = sim;
         this.Others = others;
         this.Network = network;
         this.Processor = processor;
@@ -27,6 +28,10 @@ public class UpcomingProducts {
         this.date = date;
         this.pid = pid;
         this.time = time;
+        this.imageUris = imageUris;
+    }
+
+     {
         this.imageUris = imageUris;
     }
 
@@ -94,12 +99,20 @@ public class UpcomingProducts {
         Fingerprint = fingerprint;
     }
 
-    public String getMemory() {
-        return Memory;
+    public String getROM() {
+        return ROM;
     }
 
-    public void setMemory(String memory) {
-        Memory = memory;
+    public void setROM(String ROM) {
+        this.ROM = ROM;
+    }
+
+    public String getSim() {
+        return Sim;
+    }
+
+    public void setSim(String sim) {
+        Sim = sim;
     }
 
     public String getOthers() {

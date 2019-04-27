@@ -2,7 +2,7 @@ package com.example.bismillahbrandindex.Model;
 
 public class AvailableProducts {
 
-    private String ProductName, Price, images, Battery, Camera, Color, Display, Fingerprint, Memory, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
+    private String ProductName, Price, Sim, images, Battery, Camera, Color, Display, Fingerprint, ROM, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
     private Images imageUris;
 
     public AvailableProducts(){
@@ -10,7 +10,7 @@ public class AvailableProducts {
     }
 
 
-    public AvailableProducts(String productName, String price, String images, String battery, String camera, String color, String display, String fingerprint, String memory, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
+    public AvailableProducts(String productName, String price, String sim, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
         this.ProductName = productName;
         this.Price = price;
         this.images = images;
@@ -19,7 +19,7 @@ public class AvailableProducts {
         this.Color = color;
         this.Display = display;
         this.Fingerprint = fingerprint;
-        this.Memory = memory;
+        this.ROM = ROM;
         this.Others = others;
         this.Network = network;
         this.Processor = processor;
@@ -27,6 +27,7 @@ public class AvailableProducts {
         this.YoutubeVideoLink = youtubeVideoLink;
         this.date = date;
         this.pid = pid;
+        this.Sim = sim;
         this.time = time;
         this.images = images;
         this.imageUris = imageUris;
@@ -46,6 +47,14 @@ public class AvailableProducts {
 
     public void setPrice(String price) {
         Price = price;
+    }
+
+    public String getSim() {
+        return Sim;
+    }
+
+    public void setSim(String sim) {
+        Sim = sim;
     }
 
     public String getImages() {
@@ -96,12 +105,12 @@ public class AvailableProducts {
         Fingerprint = fingerprint;
     }
 
-    public String getMemory() {
-        return Memory;
+    public String getROM() {
+        return ROM;
     }
 
-    public void setMemory(String memory) {
-        Memory = memory;
+    public void setROM(String ROM) {
+        this.ROM = ROM;
     }
 
     public String getOthers() {
