@@ -1,10 +1,14 @@
 package com.example.bismillahbrandindex;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
@@ -27,6 +31,7 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
     private String productID = "";
     YouTubePlayerView youTubePlayerView;
     private String youtubeVideoLink;
+    private ImageView call, messenger;
 
     private ViewPager productImagesViewPager;
     private TabLayout viewpagerIndicator;
@@ -54,6 +59,9 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
         pothers = (TextView) findViewById(R.id.others);
         psim = (TextView) findViewById(R.id.sim);
 
+        call = (ImageView) findViewById(R.id.call_button);
+        messenger = (ImageView) findViewById(R.id.messenger_button);
+
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
 //        initiateYoutube();
@@ -71,6 +79,30 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
         productImagesViewPager.setAdapter(productImagesAdapter);
 
         viewpagerIndicator.setupWithViewPager(productImagesViewPager, true);
+
+
+        // calling activity///////////////////////////////////////////
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01754941577")));
+            }
+        });
+        ///////////////////////////////////////////////////////////////
+
+        // messenger activity//////////////////////////////////////////
+
+        messenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.messenger.com/t/mddurotto")));
+
+            }
+        });
+        ////////////////////////////////////////////////////////////////
+
     }
 
     private void initiateYoutube() {

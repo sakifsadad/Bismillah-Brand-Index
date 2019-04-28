@@ -1,10 +1,14 @@
 package com.example.bismillahbrandindex;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bismillahbrandindex.Model.AvailableProducts;
@@ -30,6 +34,7 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
     private String youtubeVideoLink;
     private ViewPager productImagesViewPager;
     private TabLayout viewpagerIndicator;
+    private ImageView call, messenger;
 
 
     @Override
@@ -53,6 +58,8 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
         pfingerprint = (TextView) findViewById(R.id.fingerprint);
         pothers = (TextView) findViewById(R.id.others);
         psim = (TextView) findViewById(R.id.sim);
+        call = (ImageView) findViewById(R.id.call_button);
+        messenger = (ImageView) findViewById(R.id.messenger_button);
 
         youTubePlayerView = (YouTubePlayerView) findViewById(R.id.player_view);
         getProductDetails(productID);
@@ -71,6 +78,32 @@ public class UpcomingProductDetails extends YouTubeBaseActivity {
         productImagesViewPager.setAdapter(productImagesAdapter);
 
         viewpagerIndicator.setupWithViewPager(productImagesViewPager, true);
+
+
+        // calling activity///////////////////////////////////////////
+
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01754941577")));
+            }
+        });
+        ///////////////////////////////////////////////////////////////
+
+        // messenger activity//////////////////////////////////////////
+
+        messenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.messenger.com/t/mddurotto")));
+
+            }
+        });
+        ////////////////////////////////////////////////////////////////
+
+
+
     }
 
     private void initiateYoutube() {
