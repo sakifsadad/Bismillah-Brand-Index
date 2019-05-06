@@ -3,14 +3,15 @@ package com.example.bismillahbrandindex.Model;
 public class AvailableProducts {
 
     private String ProductName, Price, Sim, images, Battery, Camera, Color, Display, Fingerprint, ROM, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
-    private Images imageUris;
+    private Images ImageUris;
+    private int x=1;
 
     public AvailableProducts(){
 
     }
 
 
-    public AvailableProducts(String productName, String price, String sim, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
+    public AvailableProducts(String productName, String price, String sim, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images ImageUris) {
         this.ProductName = productName;
         this.Price = price;
         this.images = images;
@@ -30,7 +31,11 @@ public class AvailableProducts {
         this.Sim = sim;
         this.time = time;
         this.images = images;
-        this.imageUris = imageUris;
+        this.ImageUris = ImageUris;
+    }
+
+    public AvailableProducts(int x) {
+        this.x = x;
     }
 
     public String getProductName() {
@@ -178,11 +183,19 @@ public class AvailableProducts {
     }
 
     public Images getImageUris() {
-        return imageUris;
+        return ImageUris;
     }
 
     public void setImageUris(Images imageUris) {
-        this.imageUris = imageUris;
+        this.ImageUris = imageUris;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 }
 

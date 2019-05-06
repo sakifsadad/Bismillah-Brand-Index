@@ -3,13 +3,13 @@ package com.example.bismillahbrandindex.Model;
 public class UpcomingProducts {
 
     private String ProductName, Price, images, Battery, Camera, Color, Display, Fingerprint, ROM, Sim, Others, Network, Processor, RAM, YoutubeVideoLink, date, pid, time;
-    private Images imageUris;
+    private Images ImageUris;
 
     public UpcomingProducts() {
 
     }
 
-    public UpcomingProducts(String productName, String price, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String sim, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images imageUris) {
+    public UpcomingProducts(String productName, String price, String images, String battery, String camera, String color, String display, String fingerprint, String ROM, String sim, String others, String network, String processor, String RAM, String youtubeVideoLink, String date, String pid, String time, Images ImageUris) {
         this.ProductName = productName;
         this.Price = price;
         this.images = images;
@@ -28,11 +28,11 @@ public class UpcomingProducts {
         this.date = date;
         this.pid = pid;
         this.time = time;
-        this.imageUris = imageUris;
+        this.ImageUris = ImageUris;
     }
 
      {
-        this.imageUris = imageUris;
+        this.ImageUris = ImageUris;
     }
 
     public String getProductName() {
@@ -180,10 +180,10 @@ public class UpcomingProducts {
     }
 
     public Images getImageUris() {
-        return imageUris;
+        return ImageUris;
     }
 
     public void setImageUris(Images imageUris) {
-        this.imageUris = imageUris;
+        this.ImageUris = imageUris;
     }
 }

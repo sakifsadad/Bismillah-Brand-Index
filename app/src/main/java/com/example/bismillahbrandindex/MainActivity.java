@@ -24,7 +24,7 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference availableProductsref;
+    private DatabaseReference availableProductsref, imagesRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private Button button;
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.upcoming_product_button);
 
         availableProductsref = FirebaseDatabase.getInstance().getReference().child("Available Products");
+//        availableProductsref = FirebaseDatabase.getInstance().getReference().child("Available Products").child("ImageUris").child("images");
 
 
 
@@ -85,7 +86,9 @@ public class MainActivity extends AppCompatActivity {
 
                         holder.txtProductName.setText(model.getProductName());
                         holder.txtProductPrice.setText(model.getPrice() + " Tk.");
-                        Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
+//                        Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
+                        Picasso.get().load(model.getImageUris().getImages().get(0)).into(holder.imageView);
+//                        Picasso.get().load(model.getX()).into(holder.imageView);
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -118,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String getThumbnailImage(AvailableProducts model) {
-        Images imageUris = model.getImageUris();
-        String id = imageUris == null ? model.getImages() : imageUris.getImages().get(0);
-        return id;
-    }
+//    private String getThumbnailImage(AvailableProducts model) {
+//        Images imageUris = model.getImageUris();
+//        String id = imageUris == null ? model.getImages() : imageUris.getImages().get(0);
+//        return id;
+//    }
 }

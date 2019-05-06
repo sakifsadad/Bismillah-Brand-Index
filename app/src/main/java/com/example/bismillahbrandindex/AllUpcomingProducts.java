@@ -71,6 +71,7 @@ public class AllUpcomingProducts extends AppCompatActivity {
 
                         holder.txtProductName.setText(model.getProductName());
                         holder.txtProductPrice.setText(model.getPrice() + " Tk.");
+                        Picasso.get().load(model.getImageUris().getImages().get(0)).into(holder.imageView);
 //                        Picasso.get().load(getThumbnailImage(model)).into(holder.imageView);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
