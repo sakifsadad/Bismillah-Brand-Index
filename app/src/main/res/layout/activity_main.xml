@@ -5,33 +5,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_above="@+id/upcoming_product_button"
+        android:layout_marginBottom="20px"
+        />
 
     <Button
         android:id="@+id/upcoming_product_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFAC0C"
-        android:layout_alignBottom="@+id/recycler_menu"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="10dp"
-        android:text="Upcoming Products" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="8dp"
+        android:background="#FFAC0C"
+        android:text="Upcoming Products"/>
 </RelativeLayout>

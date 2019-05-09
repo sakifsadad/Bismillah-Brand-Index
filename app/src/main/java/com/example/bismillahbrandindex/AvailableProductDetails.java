@@ -87,7 +87,7 @@ public class AvailableProductDetails extends YouTubeBaseActivity {
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:01754941577")));
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+8801754941577")));
             }
         });
         ///////////////////////////////////////////////////////////////
